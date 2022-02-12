@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
-    "module": "ES2015",
-    "target": "ES2015",
+    "module": "commonJS",
+    "target": "es5",
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "pretty": true,
     "watch": true,
-    "rootDir": "src"
+    "rootDir": "src",
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": ["node_modules"],
 }

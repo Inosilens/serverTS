@@ -1,21 +1,33 @@
 import dotenv from "dotenv";
-import  express from "express";
-import sequalize from './db.js'
-import path from 'path'
 dotenv.config()
-
-
-let env = process.env.DB_HOST;
-
-
+import express, {json} from "express";
+import {sequelize} from "./db";
+import Models from './models/index'
 
 let app = express()
-const PORT = process.env.DB_PORT || 8000
+app.use(json())
+
+console.log(Models[1])
+
+
+const PORT = process.env.PORT || 8000
 
 app.get('/users', (req, res) => {
-    res.send('The sedulous hyena ate the antelope!');
+    res.send({message:'you are best'});
 });
 
+const start = async() => {
+    try {
+        await sequelize.authenticate()
+        await sequelize.sync()
+        app.listen(PORT, ()=>{
+            console.log(`server start at : ${PORT}`)
+        })
+    }
+    catch (e) {
+        console.log(e)
+    }
+}
 
-
+start()
 
