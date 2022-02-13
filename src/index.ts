@@ -1,13 +1,20 @@
 import dotenv from "dotenv";
-import express, {json} from "express";
+import express from "express";
 import {sequelize} from "./db";
 import rootRouter from "./router";
+import path from "path";
+import fileUpload from "express-fileupload";
+
 
 dotenv.config()
 const PORT = process.env.PORT || 8000
 let app = express()
 app.use(express.json())
+app.use(express.static(path.resolve(__dirname, 'static')))
+app.use(fileUpload({}))
 app.use('/api', rootRouter)
+
+
 
 const start = async () => {
     try {
