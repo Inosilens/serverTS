@@ -1,7 +1,11 @@
 import {Users} from './users/users'
+import {Posts} from './posts/posts'
 
-const Models = {
-   1 : Users
-}
+Users.hasMany(Posts)
 
-export default Models
+
+export const Models = {Users,Posts}
+
+
+
+
